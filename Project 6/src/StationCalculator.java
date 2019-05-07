@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.sun.tools.javac.Main;
+
 public class StationCalculator {
 
 	private ArrayList<String> stations = new ArrayList<String>();
@@ -29,5 +31,8 @@ public class StationCalculator {
 			bw.nextLine();
 		}
 		bw.close();
+	}
+	public ArrayList<String> getStations() {
+		return stations;
 	}
 }

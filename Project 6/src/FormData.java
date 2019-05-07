@@ -27,39 +27,39 @@ public class FormData
 		this.phraseSix = "";	
 	}
 	public void setCyValues() {
-		this.phraseOne = "";
-		this.phraseTwo = "";
-		this.phraseThree = "";
-		this.phraseFour = "";
-		this.phraseFive = "";
-		this.phraseSix = "";
+		this.phraseOne = "What's pop";
+		this.phraseTwo = "Bet that";
+		this.phraseThree = "Oh for sure, no doubt";
+		this.phraseFour = "No complaints";
+		this.phraseFive = "Don't even trip";
+		this.phraseSix = "I gotchu, brother";
 	}
 	public void setChristianValues() {
-		this.phraseOne = "";
-		this.phraseTwo = "";
-		this.phraseThree = "";
-		this.phraseFour = "";
-		this.phraseFive = "";
-		this.phraseSix = "";
+		this.phraseOne = "That's fair";
+		this.phraseTwo = "Oh yeah, dawg";
+		this.phraseThree = "What's Gucc";
+		this.phraseFour = "Let's get it";
+		this.phraseFive = "Goteeeee";
+		this.phraseSix = "Let me get that thang (JUUL)";
 	}
 	public void setDorothyValues() {
-		this.phraseOne = "";
-		this.phraseTwo = "";
-		this.phraseThree = "";
-		this.phraseFour = "";
-		this.phraseFive = "";
-		this.phraseSix = "";
+		this.phraseOne = "Dorothy hungry";
+		this.phraseTwo = "Hold my hand";
+		this.phraseThree = "You're cancer";
+		this.phraseFour = "No";
+		this.phraseFive = "Moreover";
+		this.phraseSix = "Please cuddle me";
 	}
 	public void setHarrisValues() {
-		this.phraseOne = "";
-		this.phraseTwo = "";
-		this.phraseThree = "";
-		this.phraseFour = "";
-		this.phraseFive = "";
-		this.phraseSix = "";
+		this.phraseOne = "Heard that bet";
+		this.phraseTwo = "Big RIP";
+		this.phraseThree = "RIP";
+		this.phraseFour = "Small RIP";
+		this.phraseFive = "Unfortunate";
+		this.phraseSix = "That's dope";
 	}
 	public void setJeremyValues() {
-		this.phraseOne = "";
+		this.phraseOne = "Anime is trash";
 		this.phraseTwo = "";
 		this.phraseThree = "";
 		this.phraseFour = "";
@@ -67,7 +67,7 @@ public class FormData
 		this.phraseSix = "";
 	}
 	public String[] getCyValues() {
-		String[] cy = new String[5];
+		String[] cy = new String[6];
 		cy[0] = phraseOne;
 		cy[1] = phraseTwo;
 		cy[2] = phraseThree;
@@ -77,7 +77,7 @@ public class FormData
 		return cy;
 	}
 	public String[] getAliValues() {
-		String[] ali = new String[5];
+		String[] ali = new String[6];
 		ali[0] = phraseOne;
 		ali[1] = phraseTwo;
 		ali[2] = phraseThree;
@@ -86,8 +86,18 @@ public class FormData
 		ali[5] = phraseSix;
 		return ali;
 	}
+	public String[] getBeauValues() {
+		String[] beau = new String[6];
+		beau[0] = phraseOne;
+		beau[1] = phraseTwo;
+		beau[2] = phraseThree;
+		beau[3] = phraseFour;
+		beau[4] = phraseFive;
+		beau[5] = phraseSix;
+		return beau;
+	}
 	public String[] getChristianValues() {
-		String[] christian = new String[5];
+		String[] christian = new String[6];
 		christian[0] = phraseOne;
 		christian[1] = phraseTwo;
 		christian[2] = phraseThree;
@@ -97,7 +107,7 @@ public class FormData
 		return christian;
 	}
 	public String[] getDorothyValues() {
-		String[] dorothy = new String[5];
+		String[] dorothy = new String[6];
 		dorothy[0] = phraseOne;
 		dorothy[1] = phraseTwo;
 		dorothy[2] = phraseThree;
@@ -107,7 +117,7 @@ public class FormData
 		return dorothy;
 	}
 	public String[] getHarrisValues() {
-		String[] harris = new String[5];
+		String[] harris = new String[6];
 		harris[0] = phraseOne;
 		harris[1] = phraseTwo;
 		harris[2] = phraseThree;
@@ -117,7 +127,7 @@ public class FormData
 		return harris;
 	}
 	public String[] getJeremyValues() {
-		String[] jeremy = new String[5];
+		String[] jeremy = new String[6];
 		jeremy[0] = phraseOne;
 		jeremy[1] = phraseTwo;
 		jeremy[2] = phraseThree;

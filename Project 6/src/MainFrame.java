@@ -1,4 +1,6 @@
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -17,22 +19,241 @@ public class MainFrame extends JFrame
 	private JComboBox<String> names;
 	private ArrayList<FormData> phrases = new ArrayList<FormData>();
 	JLabel voice2hear = new JLabel("Pick the voice you would like to hear:");
-	JPanel audioPanel = new JPanel(new GridLayout(4, 2)); 
+	JPanel audioPanel = new JPanel(); 
 	private static String[] personSelect = {"Ali", "Beau", "Christian", "Cy", "Dorothy", "Harris", "Jeremy"};
-	private JButton phrase1;
-	private JButton phrase2;
-	private JButton phrase3;
-	private JButton phrase4;
-	private JButton phrase5;
-	private JButton phrase6;
+	private JButton phrase1 = new JButton("Phrase 1");
+	private JButton phrase2 = new JButton("Phrase 2");
+	private JButton phrase3 = new JButton("Phrase 3");
+	private JButton phrase4 = new JButton("Phrase 4");
+	private JButton phrase5 = new JButton("Phrase 5");
+	private JButton phrase6 = new JButton("Phrase 6");
 	JPanel stationPanel = new JPanel(new GridLayout(1, 3));
 	JLabel pickStations = new JLabel("Pick two Stations:");
 	JComboBox<String> stations;
+	GridLayout audioLayout = new GridLayout(4, 2);
 	
-	public MainFrame() {
+	public MainFrame() throws IOException {
 		super("Project 6");
-		setLayout(new GridLayout(4, 2));
+		setLayout(new FlowLayout());
 		names = new JComboBox<String>(personSelect);
+		names.addActionListener((e) -> {
+			if (names.getSelectedItem() == "Ali") {
+				FormData fd1 = new FormData();
+				fd1.setAliValues();
+				String[] aliPhrases = fd1.getAliValues();
+				phrase1.setText(aliPhrases[0]);
+				phrase2.setText(aliPhrases[1]);
+				phrase3.setText(aliPhrases[2]);
+				phrase4.setText(aliPhrases[3]);
+				phrase5.setText(aliPhrases[4]);
+				phrase6.setText(aliPhrases[5]);
+			}
+			if (names.getSelectedItem() == "Beau") {
+				FormData fd2 = new FormData();
+				fd2.setBeauValues();
+				String[] beauPhrases = fd2.getBeauValues();
+				phrase1.setText(beauPhrases[0]);
+				phrase2.setText(beauPhrases[1]);
+				phrase3.setText(beauPhrases[2]);
+				phrase4.setText(beauPhrases[3]);
+				phrase5.setText(beauPhrases[4]);
+				phrase6.setText(beauPhrases[5]);
+			}
+			if (names.getSelectedItem() == "Christian") {
+				FormData fd3 = new FormData();
+				fd3.setChristianValues();
+				String[] christianPhrases = fd3.getChristianValues();
+				phrase1.setText(christianPhrases[0]);
+				phrase2.setText(christianPhrases[1]);
+				phrase3.setText(christianPhrases[2]);
+				phrase4.setText(christianPhrases[3]);
+				phrase5.setText(christianPhrases[4]);
+				phrase6.setText(christianPhrases[5]);
+			}
+			if (names.getSelectedItem() == "Cy") {
+				FormData fd4 = new FormData();
+				fd4.setCyValues();
+				String[] cyPhrases = fd4.getCyValues();
+				phrase1.setText(cyPhrases[0]);
+				phrase2.setText(cyPhrases[1]);
+				phrase3.setText(cyPhrases[2]);
+				phrase4.setText(cyPhrases[3]);
+				phrase5.setText(cyPhrases[4]);
+				phrase6.setText(cyPhrases[5]);
+			}
+			if (names.getSelectedItem() == "Dorothy") {
+				FormData fd5 = new FormData();
+				fd5.setDorothyValues();
+				String[] dorothyPhrases = fd5.getDorothyValues();
+				phrase1.setText(dorothyPhrases[0]);
+				phrase2.setText(dorothyPhrases[1]);
+				phrase3.setText(dorothyPhrases[2]);
+				phrase4.setText(dorothyPhrases[3]);
+				phrase5.setText(dorothyPhrases[4]);
+				phrase6.setText(dorothyPhrases[5]);
+			}
+			if (names.getSelectedItem() == "Harris") {
+				FormData fd6 = new FormData();
+				fd6.setHarrisValues();
+				String[] harrisPhrases = fd6.getHarrisValues();
+				phrase1.setText(harrisPhrases[0]);
+				phrase2.setText(harrisPhrases[1]);
+				phrase3.setText(harrisPhrases[2]);
+				phrase4.setText(harrisPhrases[3]);
+				phrase5.setText(harrisPhrases[4]);
+				phrase6.setText(harrisPhrases[5]);
+			}
+			if (names.getSelectedItem() == "Jeremy") {
+				FormData fd7 = new FormData();
+				fd7.setJeremyValues();
+				String[] jeremyPhrases = fd7.getJeremyValues();
+				phrase1.setText(jeremyPhrases[0]);
+				phrase2.setText(jeremyPhrases[1]);
+				phrase3.setText(jeremyPhrases[2]);
+				phrase4.setText(jeremyPhrases[3]);
+				phrase5.setText(jeremyPhrases[4]);
+				phrase6.setText(jeremyPhrases[5]);
+			}
+		});
+		phrase1.addActionListener((e) -> {
+			if (phrase1.getText() == "Come on, guy" && phrase1.isSelected() == true) {
+				//play audio
+			}
+			if (phrase1.getText() == "What's pop" && phrase1.isSelected() == true) {
+				//play audio
+			}
+			if (phrase1.getText() == "That's fair" && phrase1.isSelected() == true) {
+				//play audio
+			}
+			if (phrase1.getText() == "Dorothy hungry" && phrase1.isSelected() == true) {
+				//play audio
+			}
+			if (phrase1.getText() == "Heard that bet" && phrase1.isSelected() == true) {
+				//play audio
+			}
+			if (phrase1.getText() == "Anime is trash" && phrase1.isSelected() == true) {
+				//play audio
+			}
+			if (phrase1.getText() == "(insert ali phrase)" && phrase1.isSelected() == true) {
+				//play audio
+			}
+		});
+		phrase2.addActionListener((e) -> {
+			if (phrase2.getText() == "Time to get this plata" && phrase2.isSelected() == true) {
+				//play audio
+			}
+			if (phrase2.getText() == "Bet that" && phrase2.isSelected() == true) {
+				//play audio
+			}
+			if (phrase2.getText() == "Oh yeah, dawg" && phrase2.isSelected() == true) {
+				//play audio
+			}
+			if (phrase2.getText() == "Hold my hand" && phrase2.isSelected() == true) {
+				//play audio
+			}
+			if (phrase2.getText() == "Big RIP" && phrase2.isSelected() == true) {
+				//play audio
+			}
+			if (phrase2.getText() == "(insert ali phrase)" && phrase2.isSelected() == true) {
+				//play audio
+			}
+			if (phrase2.getText() == "(insert jeremy phrase)" && phrase2.isSelected() == true) {
+				//play audio
+			}
+		});
+		phrase3.addActionListener((e) -> {
+			if (phrase3.getText() == "That's wild" && phrase3.isSelected() == true) {
+				//play audio
+			}
+			if (phrase3.getText() == "Oh for sure, no doubt" && phrase3.isSelected() == true) {
+				//play audio
+			}
+			if (phrase3.getText() == "What's Gucc" && phrase3.isSelected() == true) {
+				//play audio
+			}
+			if (phrase3.getText() == "You're cancer" && phrase3.isSelected() == true) {
+				//play audio
+			}
+			if (phrase3.getText() == "RIP" && phrase3.isSelected() == true) {
+				//play audio
+			}
+			if (phrase3.getText() == "(insert ali phrase)" && phrase3.isSelected() == true) {
+				//play audio
+			}
+			if (phrase3.getText() == "(insert jeremy phrase)" && phrase3.isSelected() == true) {
+				//play audio
+			}
+		});
+		phrase4.addActionListener((e) -> {
+			if (phrase4.getText() == "Trying to make that banko" && phrase4.isSelected() == true) {
+				//play audio
+			}
+			if (phrase4.getText() == "No complaints" && phrase4.isSelected() == true) {
+				//play audio
+			}
+			if (phrase4.getText() == "Let's get it" && phrase4.isSelected() == true) {
+				//play audio
+			}
+			if (phrase4.getText() == "No" && phrase4.isSelected() == true) {
+				//play audio
+			}
+			if (phrase4.getText() == "Small RIP" && phrase4.isSelected() == true) {
+				//play audio
+			}
+			if (phrase4.getText() == "(insert ali phrase)" && phrase4.isSelected() == true) {
+				//play audio
+			}
+			if (phrase4.getText() == "(insert jeremy phrase)" && phrase4.isSelected() == true) {
+				//play audio
+			}
+		});
+		phrase5.addActionListener((e) -> {
+			if (phrase5.getText() == "I'm about to K.O." && phrase5.isSelected() == true) {
+				//play audio
+			}
+			if (phrase5.getText() == "Don't even trip" && phrase5.isSelected() == true) {
+				//play audio
+			}
+			if (phrase5.getText() == "Goteeeee" && phrase5.isSelected() == true) {
+				//play audio
+			}
+			if (phrase5.getText() == "Moreover" && phrase5.isSelected() == true) {
+				//play audio
+			}
+			if (phrase5.getText() == "Unfortunate" && phrase5.isSelected() == true) {
+				//play audio
+			}
+			if (phrase5.getText() == "(insert ali phrase)" && phrase5.isSelected() == true) {
+				//play audio
+			}
+			if (phrase5.getText() == "(insert jeremy phrase)" && phrase5.isSelected() == true) {
+				//play audio
+			}
+		});
+		phrase6.addActionListener((e) -> {
+			if (phrase6.getText() == "We are golden" && phrase6.isSelected() == true) {
+				//play audio
+			}
+			if (phrase6.getText() == "I gotchu, brother" && phrase6.isSelected() == true) {
+				//play audio
+			}
+			if (phrase6.getText() == "Let me get that thang (JUUL)" && phrase6.isSelected() == true) {
+				//play audio
+			}
+			if (phrase6.getText() == "Please cuddle me" && phrase6.isSelected() == true) {
+				//play audio
+			}
+			if (phrase6.getText() == "That's dope" && phrase6.isSelected() == true) {
+				//play audio
+			}
+			if (phrase6.getText() == "(insert ali phrase)" && phrase6.isSelected() == true) {
+				//play audio
+			}
+			if (phrase6.getText() == "(insert jeremy phrase)" && phrase6.isSelected() == true) {
+				//play audio
+			}
+		});
+		audioPanel.setLayout(audioLayout);
 		audioPanel.add(voice2hear);
 		audioPanel.add(names);
 		audioPanel.add(phrase1);
@@ -41,7 +262,18 @@ public class MainFrame extends JFrame
 		audioPanel.add(phrase4);
 		audioPanel.add(phrase5);
 		audioPanel.add(phrase6);
+		StationCalculator sc = new StationCalculator();
+		ArrayList<String> stationIDs = sc.getStations();
+		String[] s = new String[stationIDs.size()];
+		for (int i = 0; i < stationIDs.size(); ++i) {
+			s[i] = stationIDs.get(i);
+		}
+		stations = new JComboBox<String>(s);
+		stationPanel.add(pickStations);
+		stationPanel.add(stations);
+		stationPanel.add(stations);
 		this.add(audioPanel);
+		this.add(stationPanel);
 		
 		
 		
@@ -53,6 +285,9 @@ public class MainFrame extends JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 		
+	}
+	public static void main(String[] args) throws IOException {
+		new MainFrame();
 	}
 	
 	
