@@ -1,13 +1,22 @@
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
-
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.Mixer;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import com.sun.tools.javac.Main;
 
 public class MainFrame extends JFrame
 {
@@ -17,7 +26,8 @@ public class MainFrame extends JFrame
 	 */
 	private static final long serialVersionUID = 1L;
 	private JComboBox<String> names;
-	private ArrayList<FormData> phrases = new ArrayList<FormData>();
+	public static Mixer mixer;
+	public static Clip clip;
 	JLabel voice2hear = new JLabel("Pick the voice you would like to hear:");
 	JPanel audioPanel = new JPanel(); 
 	private static String[] personSelect = {"Ali", "Beau", "Christian", "Cy", "Dorothy", "Harris", "Jeremy"};
@@ -29,12 +39,18 @@ public class MainFrame extends JFrame
 	private JButton phrase6 = new JButton("Phrase 6");
 	JPanel stationPanel = new JPanel(new GridLayout(1, 3));
 	JLabel pickStations = new JLabel("Pick two Stations:");
-	JComboBox<String> stations;
+	JComboBox<String> stations1;
+	JComboBox<String> stations2;
 	GridLayout audioLayout = new GridLayout(4, 2);
+	JButton aDiff = new JButton("Calc DIfference");
+	JButton aSum = new JButton("Calc Sum");
+	JButton aProduct = new JButton("Calc Product");
+	JButton aQuotient = new JButton("Calc Quotient");
+	JTextField answer = new JTextField();
 	
 	public MainFrame() throws IOException {
 		super("Project 6");
-		setLayout(new FlowLayout());
+		setLayout(new GridLayout(2, 2));
 		names = new JComboBox<String>(personSelect);
 		names.addActionListener((e) -> {
 			if (names.getSelectedItem() == "Ali") {
@@ -116,140 +132,141 @@ public class MainFrame extends JFrame
 			}
 		});
 		phrase1.addActionListener((e) -> {
-			if (phrase1.getText() == "Come on, guy" && phrase1.isSelected() == true) {
+			if (phrase1.getText() == "Come on, guy") {
 				//play audio
 			}
-			if (phrase1.getText() == "What's pop" && phrase1.isSelected() == true) {
+			if (phrase1.getText() == "What's pop") {
 				//play audio
 			}
-			if (phrase1.getText() == "That's fair" && phrase1.isSelected() == true) {
+			if (phrase1.getText() == "That's fair") {
+				Sound ch1 = new Sound("That_s Fair(Christian).wav");
+				ch1.playClip(ch1.getFile());
+			}
+			if (phrase1.getText() == "Dorothy hungry") {
 				//play audio
 			}
-			if (phrase1.getText() == "Dorothy hungry" && phrase1.isSelected() == true) {
+			if (phrase1.getText() == "Heard that bet") {
 				//play audio
 			}
-			if (phrase1.getText() == "Heard that bet" && phrase1.isSelected() == true) {
+			if (phrase1.getText() == "Anime is trash") {
 				//play audio
 			}
-			if (phrase1.getText() == "Anime is trash" && phrase1.isSelected() == true) {
-				//play audio
-			}
-			if (phrase1.getText() == "(insert ali phrase)" && phrase1.isSelected() == true) {
+			if (phrase1.getText() == "(insert ali phrase)") {
 				//play audio
 			}
 		});
 		phrase2.addActionListener((e) -> {
-			if (phrase2.getText() == "Time to get this plata" && phrase2.isSelected() == true) {
+			if (phrase2.getText() == "Time to get this plata") {
 				//play audio
 			}
-			if (phrase2.getText() == "Bet that" && phrase2.isSelected() == true) {
+			if (phrase2.getText() == "Bet that") {
 				//play audio
 			}
-			if (phrase2.getText() == "Oh yeah, dawg" && phrase2.isSelected() == true) {
+			if (phrase2.getText() == "Oh yeah, dawg") {
 				//play audio
 			}
-			if (phrase2.getText() == "Hold my hand" && phrase2.isSelected() == true) {
+			if (phrase2.getText() == "Hold my hand") {
 				//play audio
 			}
-			if (phrase2.getText() == "Big RIP" && phrase2.isSelected() == true) {
+			if (phrase2.getText() == "Big RIP") {
 				//play audio
 			}
-			if (phrase2.getText() == "(insert ali phrase)" && phrase2.isSelected() == true) {
+			if (phrase2.getText() == "(insert ali phrase)") {
 				//play audio
 			}
-			if (phrase2.getText() == "(insert jeremy phrase)" && phrase2.isSelected() == true) {
+			if (phrase2.getText() == "(insert jeremy phrase)") {
 				//play audio
 			}
 		});
 		phrase3.addActionListener((e) -> {
-			if (phrase3.getText() == "That's wild" && phrase3.isSelected() == true) {
+			if (phrase3.getText() == "That's wild") {
 				//play audio
 			}
-			if (phrase3.getText() == "Oh for sure, no doubt" && phrase3.isSelected() == true) {
+			if (phrase3.getText() == "Oh for sure, no doubt") {
 				//play audio
 			}
-			if (phrase3.getText() == "What's Gucc" && phrase3.isSelected() == true) {
+			if (phrase3.getText() == "What's Gucc") {
 				//play audio
 			}
-			if (phrase3.getText() == "You're cancer" && phrase3.isSelected() == true) {
+			if (phrase3.getText() == "You're cancer") {
 				//play audio
 			}
-			if (phrase3.getText() == "RIP" && phrase3.isSelected() == true) {
+			if (phrase3.getText() == "RIP") {
 				//play audio
 			}
-			if (phrase3.getText() == "(insert ali phrase)" && phrase3.isSelected() == true) {
+			if (phrase3.getText() == "(insert ali phrase)") {
 				//play audio
 			}
-			if (phrase3.getText() == "(insert jeremy phrase)" && phrase3.isSelected() == true) {
+			if (phrase3.getText() == "(insert jeremy phrase)") {
 				//play audio
 			}
 		});
 		phrase4.addActionListener((e) -> {
-			if (phrase4.getText() == "Trying to make that banko" && phrase4.isSelected() == true) {
+			if (phrase4.getText() == "Trying to make that banko") {
 				//play audio
 			}
-			if (phrase4.getText() == "No complaints" && phrase4.isSelected() == true) {
+			if (phrase4.getText() == "No complaints") {
 				//play audio
 			}
-			if (phrase4.getText() == "Let's get it" && phrase4.isSelected() == true) {
+			if (phrase4.getText() == "Let's get it") {
 				//play audio
 			}
-			if (phrase4.getText() == "No" && phrase4.isSelected() == true) {
+			if (phrase4.getText() == "No") {
 				//play audio
 			}
-			if (phrase4.getText() == "Small RIP" && phrase4.isSelected() == true) {
+			if (phrase4.getText() == "Small RIP") {
 				//play audio
 			}
-			if (phrase4.getText() == "(insert ali phrase)" && phrase4.isSelected() == true) {
+			if (phrase4.getText() == "(insert ali phrase)") {
 				//play audio
 			}
-			if (phrase4.getText() == "(insert jeremy phrase)" && phrase4.isSelected() == true) {
+			if (phrase4.getText() == "(insert jeremy phrase)") {
 				//play audio
 			}
 		});
 		phrase5.addActionListener((e) -> {
-			if (phrase5.getText() == "I'm about to K.O." && phrase5.isSelected() == true) {
+			if (phrase5.getText() == "I'm about to K.O.") {
 				//play audio
 			}
-			if (phrase5.getText() == "Don't even trip" && phrase5.isSelected() == true) {
+			if (phrase5.getText() == "Don't even trip") {
 				//play audio
 			}
-			if (phrase5.getText() == "Goteeeee" && phrase5.isSelected() == true) {
+			if (phrase5.getText() == "Goteeeee") {
 				//play audio
 			}
-			if (phrase5.getText() == "Moreover" && phrase5.isSelected() == true) {
+			if (phrase5.getText() == "Moreover") {
 				//play audio
 			}
-			if (phrase5.getText() == "Unfortunate" && phrase5.isSelected() == true) {
+			if (phrase5.getText() == "Unfortunate") {
 				//play audio
 			}
-			if (phrase5.getText() == "(insert ali phrase)" && phrase5.isSelected() == true) {
+			if (phrase5.getText() == "(insert ali phrase)") {
 				//play audio
 			}
-			if (phrase5.getText() == "(insert jeremy phrase)" && phrase5.isSelected() == true) {
+			if (phrase5.getText() == "(insert jeremy phrase)") {
 				//play audio
 			}
 		});
 		phrase6.addActionListener((e) -> {
-			if (phrase6.getText() == "We are golden" && phrase6.isSelected() == true) {
+			if (phrase6.getText() == "We are golden") {
 				//play audio
 			}
-			if (phrase6.getText() == "I gotchu, brother" && phrase6.isSelected() == true) {
+			if (phrase6.getText() == "I gotchu, brother") {
 				//play audio
 			}
-			if (phrase6.getText() == "Let me get that thang (JUUL)" && phrase6.isSelected() == true) {
+			if (phrase6.getText() == "Let me get that thang (JUUL)") {
 				//play audio
 			}
-			if (phrase6.getText() == "Please cuddle me" && phrase6.isSelected() == true) {
+			if (phrase6.getText() == "Please cuddle me") {
 				//play audio
 			}
-			if (phrase6.getText() == "That's dope" && phrase6.isSelected() == true) {
+			if (phrase6.getText() == "That's dope") {
 				//play audio
 			}
-			if (phrase6.getText() == "(insert ali phrase)" && phrase6.isSelected() == true) {
+			if (phrase6.getText() == "(insert ali phrase)") {
 				//play audio
 			}
-			if (phrase6.getText() == "(insert jeremy phrase)" && phrase6.isSelected() == true) {
+			if (phrase6.getText() == "(insert jeremy phrase)") {
 				//play audio
 			}
 		});
@@ -268,20 +285,67 @@ public class MainFrame extends JFrame
 		for (int i = 0; i < stationIDs.size(); ++i) {
 			s[i] = stationIDs.get(i);
 		}
-		stations = new JComboBox<String>(s);
+		stations1 = new JComboBox<String>(s);
 		stationPanel.add(pickStations);
-		stationPanel.add(stations);
-		stationPanel.add(stations);
+		stationPanel.add(stations1);
+		stations2 = new JComboBox<String>(s);
+		stationPanel.add(stations2);
+		answer.setEditable(false);
+		stationPanel.add(aDiff);
+		stationPanel.add(aSum);
+		stationPanel.add(aProduct);
+		stationPanel.add(aQuotient);
+		stationPanel.add(answer);
+		aDiff.addActionListener((e) -> {
+				try {
+					StationCalculator diff = new StationCalculator();
+					int d1 = diff.calAverage(stations1.getSelectedItem().toString());
+					int d2 = diff.calAverage(stations2.getSelectedItem().toString());
+					int d = d1-d2;
+					answer.setText("" + d);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		});
+		aSum.addActionListener((e) -> {
+				try {
+					StationCalculator sum = new StationCalculator();
+					int s1 = sum.calAverage(stations1.getSelectedItem().toString());
+					int s2 = sum.calAverage(stations2.getSelectedItem().toString());
+					int sm = s1 + s2;
+					answer.setText("" + sm);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		});
+		aProduct.addActionListener((e) -> {
+				try {
+					StationCalculator product = new StationCalculator();
+					int p1 = product.calAverage(stations1.getSelectedItem().toString());
+					int p2 = product.calAverage(stations2.getSelectedItem().toString());
+					int prod = p1 * p2;
+					answer.setText("" + prod);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		});
+		aQuotient.addActionListener((e) -> {
+				try {
+					StationCalculator quotient = new StationCalculator();
+					int q1 = quotient.calAverage(stations1.getSelectedItem().toString());
+					int q2 = quotient.calAverage(stations2.getSelectedItem().toString());
+					int quot = (int) q1/q2;
+					answer.setText("" + quot);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		});
 		this.add(audioPanel);
 		this.add(stationPanel);
-		
-		
-		
-		
-		
-		
-		
-		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 		
