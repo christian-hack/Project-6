@@ -17,6 +17,7 @@ public class Sound {
 	//public static Clip clip;
 	//private String soundfile;
 	private File soundFile;
+	private Clip clip;
 	
 	public Sound(String filename) {
 		soundFile = new File(filename);
@@ -26,14 +27,16 @@ public class Sound {
 	
 	public void playClip(File sound) {
 		try {
-			Clip clip = AudioSystem.getClip();
+			clip = AudioSystem.getClip();
 			clip.open(AudioSystem.getAudioInputStream(sound));
-			clip.start();
-			Thread.sleep(clip.getMicrosecondLength()/1000);
-		}
-		catch(Exception e) {
 			
+			//Thread.sleep(clip.getMicrosecondLength()/1000);
 		}
+		catch(LineUnavailableException lue ) { lue.printStackTrace(); }
+		 catch(UnsupportedAudioFileException lute) { lute.printStackTrace(); }
+		 catch(IOException ioe) { ioe.printStackTrace(); }
+		
+		clip.start();
 	}
 	public File getFile() {
 		return soundFile;

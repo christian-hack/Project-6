@@ -139,8 +139,7 @@ public class MainFrame extends JFrame
 				//play audio
 			}
 			if (phrase1.getText() == "That's fair") {
-				Sound ch1 = new Sound("That_s Fair(Christian).wav");
-				ch1.playClip(ch1.getFile());
+				playChristianClip("That's fair");
 			}
 			if (phrase1.getText() == "Dorothy hungry") {
 				//play audio
@@ -163,7 +162,7 @@ public class MainFrame extends JFrame
 				//play audio
 			}
 			if (phrase2.getText() == "Oh yeah, dawg") {
-				//play audio
+				playChristianClip("Oh yeah");
 			}
 			if (phrase2.getText() == "Hold my hand") {
 				//play audio
@@ -349,6 +348,58 @@ public class MainFrame extends JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 		
+	}
+	public static void playChristianClip(String p) {
+		if (p == "That's fair") {
+		Mixer.Info[] mixInfos = AudioSystem.getMixerInfo();
+		 mixer = AudioSystem.getMixer(mixInfos[4]);
+		 
+		 DataLine.Info dataInfo = new DataLine.Info(Clip.class, null);
+		 try { clip = (Clip)mixer.getLine(dataInfo);}
+		 catch(LineUnavailableException lue) { lue.printStackTrace(); }
+		 
+		 try {
+			 URL soundURL = Main.class.getResource("That_s Fair(Christian).wav");
+			 AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
+			 clip.open(audioStream);
+		 }
+		 catch(LineUnavailableException lue ) { lue.printStackTrace(); }
+		 catch(UnsupportedAudioFileException lute) { lute.printStackTrace(); }
+		 catch(IOException ioe) { ioe.printStackTrace(); }
+		 
+		 clip.start();
+		 
+		 do
+		 {
+			 try {Thread.sleep(50); }
+			 catch(InterruptedException ie) {ie.printStackTrace(); }
+		 }while (clip.isActive());
+		}
+		if (p == "Oh yeah") {
+			Mixer.Info[] mixInfos = AudioSystem.getMixerInfo();
+			 mixer = AudioSystem.getMixer(mixInfos[4]);
+			 
+			 DataLine.Info dataInfo = new DataLine.Info(Clip.class, null);
+			 try { clip = (Clip)mixer.getLine(dataInfo);}
+			 catch(LineUnavailableException lue) { lue.printStackTrace(); }
+			 
+			 try {
+				 URL soundURL = Main.class.getResource("Oh yeah, dawg(Christian).wav");
+				 AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
+				 clip.open(audioStream);
+			 }
+			 catch(LineUnavailableException lue ) { lue.printStackTrace(); }
+			 catch(UnsupportedAudioFileException lute) { lute.printStackTrace(); }
+			 catch(IOException ioe) { ioe.printStackTrace(); }
+			 
+			 clip.start();
+			 
+			 do
+			 {
+				 try {Thread.sleep(50); }
+				 catch(InterruptedException ie) {ie.printStackTrace(); }
+			 }while (clip.isActive());
+		}
 	}
 	public static void main(String[] args) throws IOException {
 		new MainFrame();
